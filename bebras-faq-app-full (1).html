@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>حول مسابقة بيبراس</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Tahoma", Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .app-container {
+            background: #ffffff;
+            max-width: 800px;
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            padding: 25px 20px 30px;
+        }
+
+        .app-title {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        .app-subtitle {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #555;
+            font-size: 16px;
+        }
+
+        .faq-item {
+            border-radius: 12px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            overflow: hidden;
+            background: #f9f9ff;
+        }
+
+        .faq-question {
+            width: 100%;
+            background: #f0f3ff;
+            border: none;
+            padding: 14px 16px;
+            text-align: right;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: bold;
+        }
+
+        .faq-question span.icon {
+            transition: transform 0.2s ease;
+            font-size: 18px;
+            margin-left: 8px;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.25s ease;
+            background: #ffffff;
+            padding: 0 16px;
+        }
+
+        .faq-answer p {
+            margin: 12px 0 14px;
+            line-height: 1.8;
+            font-size: 15px;
+            color: #333;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 400px; /* أكبر قليلاً لتناسب النصوص الأطول */
+        }
+
+        .faq-item.open .faq-question span.icon {
+            transform: rotate(90deg);
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 13px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+    <div class="app-title">حول مسابقة بيبراس</div>
+    <div class="app-subtitle">اضغطي على السؤال لعرض الإجابة</div>
+
+    <div class="faq-item">
+        <button class="faq-question">
+            <span>١) ما هي مسابقة بيبراس؟</span>
+            <span class="icon">▶</span>
+        </button>
+        <div class="faq-answer">
+            <p>
+                مسابقة عالمية تُعنى بتنمية مهارات التفكير المنطقي والحسابي لدى الطلاب من خلال حل مسائل قصيرة
+                تعتمد على المنطق أكثر من اعتمادها على البرمجة.
+            </p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-question">
+            <span>٢) ما هدف مسابقة بيبراس؟</span>
+            <span class="icon">▶</span>
+        </button>
+        <div class="faq-answer">
+            <p>
+                تنمية التفكير الحاسوبي، وتعزيز القدرة على التحليل والاستنتاج وحل المشكلات بطريقة مبتكرة.
+            </p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-question">
+            <span>٣) ما نوع الأسئلة التي تقدمها بيبراس؟</span>
+            <span class="icon">▶</span>
+        </button>
+        <div class="faq-answer">
+            <p>
+                أسئلة منطقية مرئية تعتمد على التفكير، مثل: الترتيب، الأنماط، المسارات، التتابعات،
+                قواعد الاحتمال البسيطة، وحل المشكلات.
+            </p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-question">
+            <span>٤) ما الفئات العمرية المشاركة في بيبراس؟</span>
+            <span class="icon">▶</span>
+        </button>
+        <div class="faq-answer">
+            <p>
+                تستهدف كل المراحل من الصفوف الابتدائية حتى المرحلة الثانوية، ويُقسَّم الطلاب إلى مستويات
+                بما يناسب أعمارهم.
+            </p>
+        </div>
+    </div>
+
+    <div class="footer-note">
+        تطبيق الأسئلة الشائعة حول مسابقة بيبراس
+    </div>
+</div>
+
+<script>
+    // جعل كل سؤال يفتح ويغلق عند الضغط
+    document.querySelectorAll('.faq-item').forEach(function (item) {
+        const button = item.querySelector('.faq-question');
+        button.addEventListener('click', function () {
+            // إغلاق الباقي إذا أردتِ أن يكون واحد فقط مفتوحًا
+            document.querySelectorAll('.faq-item').forEach(function (other) {
+                if (other !== item) {
+                    other.classList.remove('open');
+                }
+            });
+            // فتح/إغلاق العنصر الحالي
+            item.classList.toggle('open');
+        });
+    });
+</script>
+
+</body>
+</html>
